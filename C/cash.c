@@ -1,27 +1,27 @@
 #include <cs50.h>
 #include <stdio.h>
 
-int get_positive_float(string prompt);
+float get_positive_float(string prompt);
 
 int main(void)
 {
-    float change = get_positive_float("Change Due: ");
+    float change = get_positive_float("Change Due: $");
     
     {
-        printf("%f\n", change);
+        printf("Change owed: $%.2f\n", change);
     }
 
 }
 
 // Prompt user for positive integer
-int get_positive_float(string prompt)
+float get_positive_float(string prompt)
 {
-    int n;
+    float n;
     do
     {
         n = get_float("%s", prompt);
     }
 //     
-    while (n <= 0);
+    while (n <= .00);
     return n;
 }
