@@ -8,10 +8,7 @@ int main(void)
 {
 float change = get_positive_float("Change owed: $");
 int convertedchange = round(change * 100);
-int quarter = 25;
-int dime = 10;
-int penny = 1;
-    int count = 0;
+int count = 0;
     
  while (convertedchange >=25)
  {
