@@ -15,17 +15,17 @@ int count = 0;
      count += (convertedchange/25);
      convertedchange %= 25;
  }
-   while (convertedchange >=10)
+   while (convertedchange >=10 && convertedchange < 25)
  {
      count += (convertedchange/10);
      convertedchange %= 10;
  }
-   while (convertedchange >=5)
+   while (convertedchange >=5 && convertedchange < 10)
  {
      count += (convertedchange/5);
      convertedchange %= 5;
  }
-   while (convertedchange >=1)
+   while (convertedchange >=1 && convertedchange < 5)
  {
      count += (convertedchange/1);
      convertedchange %= 1;
