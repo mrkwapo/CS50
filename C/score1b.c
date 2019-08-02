@@ -20,7 +20,7 @@ int main(void)
         chart(scores[i]);   
     }  
 }
-//generating bar
+//Generating bar
 void chart(int score)
 {
     for (int i = 0; i < score; i++)
