@@ -9,7 +9,7 @@ int main(void)
     string s = get_string("Before: ");
     printf("After: ");
     for(int i = 0, n = strlen(s); i < n; i++)
-    //the toupper method will lowercase any letter that is not lowercase and will not modify the letter that is lowercase
+    //the tolower method will lowercase any letter that is not lowercase and will not modify the letter that is lowercase
      {
          printf("%c", tolower(s[i]));
      }
