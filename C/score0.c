@@ -18,7 +18,7 @@ int main(void)
     chart(score3);
 
 }
-
+//generating bar
 void chart(int score)
 {
     for(int i = 0; i < score; i++)
