@@ -11,7 +11,8 @@ int main(int argc, string argv[])
     //Error message if second index is not one number
    if(argc !=2)
    {
-       printf("The second string must be a number. Try again\n");
+       printf("missing command-line argument\n");
+        return 1;
    }
     //Print the ciphertext here 
     printf("ciphertext: ");
