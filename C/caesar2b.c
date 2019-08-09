@@ -2,7 +2,7 @@
 #include <cs50.h>
 #include <string.h>
 
-//
+//Encrypting messages
 
 int main(int argc, string argv[])
 {
