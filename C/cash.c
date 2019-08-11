@@ -34,7 +34,7 @@ int main(void)
         convertedchange %= 5;
     }
     //when the change owed or remainder of change is 1 cent or more, divide it by 1, store the amount of times divided into count and save the remainder in the variable convertedchange.
-    while (convertedchange > = 1 && convertedchange < 5)
+    while (convertedchange >= 1 && convertedchange < 5)
     {
         count += (convertedchange / 1);
         convertedchange %= 1;
