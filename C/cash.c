@@ -3,37 +3,44 @@
 #include <stdio.h>
 #include <math.h>
 
-//Declares that this function exists
+//Declares a function that will only recieve a positive integer
 float get_positive_float(string prompt);
 
 int main(void)
 {
-float change = get_positive_float("Change owed: $");
-int convertedchange = round(change * 100);
-int count = 0;
+    //Getting a positive integer from the user input
+    float change = get_positive_float("Change owed: $");
+    //changing a float to a whole number to avoid flaws in working with floats
+    int convertedchange = round(change * 100);
+    //declaring a variable to store and output how many coins will be used to make change
+    int count = 0;
     
- while (convertedchange >=25)
- {
-     count += (convertedchange/25);
-     convertedchange %= 25;
- }
- while (convertedchange >=10 && convertedchange < 25)
- {
-     count += (convertedchange/10);
-     convertedchange %= 10;
- }
- while (convertedchange >=5 && convertedchange < 10)
- {
-     count += (convertedchange/5);
-     convertedchange %= 5;
- }
- while (convertedchange >=1 && convertedchange < 5)
- {
-     count += (convertedchange/1);
-     convertedchange %= 1;
-}
-    
-printf("%i\n", count);
+    //when the change owed is 25 cents or more, divide it by 25, store the amount of times divided into count and save the remainder in the variable convertedchange.
+    while (convertedchange >= 25)
+    {
+        count += (convertedchange / 25);
+        convertedchange %= 25;
+    }
+    //when the change owed or remainder of change is 10 cents or more, divide it by 10, store the amount of times divided into count and save the remainder in the variable convertedchange.
+    while (convertedchange >= 10 && convertedchange < 25)
+    {
+        count += (convertedchange / 10);
+        convertedchange %= 10;
+    }
+    //when the change owed or remainder of change is 5 cents or more, divide it by 5, store the amount of times divided into count and save the remainder in the variable convertedchange.
+    while (convertedchange >= 5 && convertedchange < 10)
+    {
+        count += (convertedchange / 5);
+        convertedchange %= 5;
+    }
+    //when the change owed or remainder of change is 1 cent or more, divide it by 1, store the amount of times divided into count and save the remainder in the variable convertedchange.
+    while (convertedchange > = 1 && convertedchange < 5)
+    {
+        count += (convertedchange / 1);
+        convertedchange %= 1;
+    }
+    //output the value of count which is keeping track of how many times the change was divided by using the least amount of coins
+    printf("%i\n", count);
     
 }
 
@@ -45,7 +52,7 @@ float get_positive_float(string prompt)
     {
         n = get_float("%s", prompt);
     }
-    
+    // reprompts user if they do not input a positive integer
     while (n <= 0);
     return n;
 }
