@@ -12,7 +12,7 @@ int main(int argc, string argv[])
         printf("Incorrect usage! \nTry: ./filename key \n(hint: key must be a letter )\n");
         return 1;
     }
-    //Because argv[1] is an element in an array of strings we need to convert the type to integer
+    //Because argv[1] is an element in an array of strings we need to convert it to the type to integer
     string key = argv[1];
     
     string plaintext;
