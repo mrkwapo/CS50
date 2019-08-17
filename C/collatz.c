@@ -1,3 +1,5 @@
+//this program calculates how many steps it would take from a given number to get to zero
+
 #include <stdio.h>
 #include <cs50.h>
 
