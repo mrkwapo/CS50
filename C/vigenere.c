@@ -1,3 +1,4 @@
+//encrypts a message using characters as a key
 #include <cs50.h>
 #include <stdio.h>
 #include <stdlib.h>
