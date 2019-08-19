@@ -1,3 +1,4 @@
+//Use ./whodunit clue.bmp verdict.bmp to run this program
 // Copies a BMP file
 
 #include <stdio.h>
