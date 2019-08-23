@@ -1,4 +1,4 @@
-//Use ./resize number originalfile resizedfilename to run this program
+//Use ./resize number originalfile resizedfilename to run this program.
 // Resizes a BMP file
 
 #include <stdio.h>
