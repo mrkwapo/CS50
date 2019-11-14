@@ -52,7 +52,7 @@ float get_positive_float(string prompt)
     {
         n = get_float("%s", prompt);
     }
-    // reprompts user if they do not input a positive integer
+    // re-prompts user if they do not input a positive integer
     while (n <= 0);
     return n;
 }
