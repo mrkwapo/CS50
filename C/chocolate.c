@@ -8,21 +8,8 @@ int main(void)
     int kilos = get_int("how many kilos?\n");
     
     //handling distribution of kilos
-    int remainder = kilos % 5;
-        
-    //if the kilos have a remainder after making large bars it will return the amount of large and small bars
-    if (remainder > 0)
-    {        
-        printf("We have %i big bar(s).\n", kilos / 5);
-        printf("We have %i small bar(s).\n", remainder);
-        
-    }
-    
-    //if an even amount of large bars can be made with no kilos remaining then it will return the amount of large bars
-    if (remainder == 0)
-    {
-        printf("We have %i big bar(s).\n", kilos / 5);
-        printf("We have %i small bar(s).\n", remainder);
-    }
-
+    int remainder = kilos % 5;      
+      
+    printf("We have %i big bar(s).\n", kilos / 5);
+    printf("We have %i small bar(s).\n", remainder);
 }
