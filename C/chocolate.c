@@ -10,6 +10,5 @@ int main(void)
     //handling distribution of kilos
     int remainder = kilos % 5;      
       
-    printf("We have %i big bar(s).\n", kilos / 5);
-    printf("We have %i small bar(s).\n", remainder);
+    printf("We have %i big bar(s) and %i small bar(s)\n", kilos / 5, remainder);
 }
