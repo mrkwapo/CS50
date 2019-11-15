@@ -17,14 +17,14 @@ int main(void)
     if (b > 0)
     {
         int s = kilos / 5;
-        printf("We have %i small bars.\n", b);
+        printf("We have %i small bar(s).\n", b);
         printf("We have %i big bars.\n", s);
     }
     
     //if an even amount of large bars can be made with no kilos remaining then it will return the amount of large bars
     if (kilos % 5 == 0)
     {
-        printf("We have %i big bars.\n", a);
+        printf("We have %i big bar(s).\n", a);
     }
 
 
