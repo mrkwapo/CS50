@@ -8,6 +8,17 @@ int main(void)
 {
     int height = get_positive_int("Height: ");
     
+        for(int i= height; i > 0; i--)
+    {
+        
+        for (int j = 0; j < i; j++)
+        {     
+        printf(".");
+        }
+        printf("\n");
+            
+    }
+    
     for(int i= 0; i < height; i++)
     {
         for (int j = 0; j <= i; j++)
@@ -16,6 +27,7 @@ int main(void)
         }
         printf("\n");
     }
+
 }
 
 // Prompt user for positive integer
