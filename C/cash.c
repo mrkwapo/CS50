@@ -16,25 +16,25 @@ int main(void)
     int count = 0;
     
     //when the change owed is 25 cents or more, divide it by 25, store the amount of times divided into count and save the remainder in the variable convertedchange.
-    while (convertedchange >= 25)
+    if (convertedchange >= 25)
     {
         count += (convertedchange / 25);
         convertedchange %= 25;
     }
     //when the change owed or remainder of change is 10 cents or more, divide it by 10, store the amount of times divided into count and save the remainder in the variable convertedchange.
-    while (convertedchange >= 10 && convertedchange < 25)
+    if (convertedchange >= 10 && convertedchange < 25)
     {
         count += (convertedchange / 10);
         convertedchange %= 10;
     }
     //when the change owed or remainder of change is 5 cents or more, divide it by 5, store the amount of times divided into count and save the remainder in the variable convertedchange.
-    while (convertedchange >= 5 && convertedchange < 10)
+    if (convertedchange >= 5 && convertedchange < 10)
     {
         count += (convertedchange / 5);
         convertedchange %= 5;
     }
     //when the change owed or remainder of change is 1 cent or more, divide it by 1, store the amount of times divided into count and save the remainder in the variable convertedchange.
-    while (convertedchange >= 1 && convertedchange < 5)
+    if (convertedchange >= 1 && convertedchange < 5)
     {
         count += (convertedchange / 1);
         convertedchange %= 1;
