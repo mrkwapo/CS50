@@ -10,14 +10,14 @@ int main(void)
     int height = get_positive_int("Height: ");
     //This is the main loop loop that handle the height of each pyramid
     for (int i = 0; i < height; i++)
-    {
-        //this loop uses the given height minus one to create the spaces needed to justify/align the hashes to the right
-        for (int k = 1; k < height - i; k++)
+    {        
+        //As int i increases, it is used to decrement the amount of spaces used on each line of output by subtracting it's value from the static value of height
+        for (int j = 1; j < height - i; j++)
         {
             printf(" ");
         }
-        //this loop prints the amount of hashes for each row based on each iteration for the given height
-        for (int j = 0; j <= i; j++)
+        //this loop prints the amount of hashes for each row based on the value of int i up to the user given value of height
+        for (int k = 0; k <= i; k++)
         {
             printf("#");
         }
