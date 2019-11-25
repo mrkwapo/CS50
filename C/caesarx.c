@@ -30,7 +30,7 @@ int main(int argc, string argv[])
     for (int i = 0, n = strlen(p); i < n; i++)
     {
         //handling lowercase letters
-        if (p[i] >= 'a' && p[i] <= 'z')
+        if (islower(p[i]))
         {
             //handling the wrap around of z
             if (p[i] + atoi(argv[1]) > 122)
@@ -45,7 +45,7 @@ int main(int argc, string argv[])
         }
 
         //handling uppercase letters
-        if (p[i] >= 'A' && p[i] <= 'Z')
+        if (isupper(p[i]))
         {
             //handling the wrap around of z
             if (p[i] + atoi(argv[1]) > 90)
