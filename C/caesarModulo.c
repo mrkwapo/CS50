@@ -30,35 +30,28 @@ int main(int argc, string argv[])
     for (int i = 0, n = strlen(p); i < n; i++)
     {
         //Declaring a variable that handles numbers that would cause a wrap around
-        int c = atoi(argv[1]) % 26;
+        int key = atoi(argv[1]) % 26;
+        int encrypt = key + p[i];
         //handling lowercase letters
         if (islower(p[i]))
-        {            
-            //if no wrap around is needed add the key
-            if (p[i] + c < 122)
+        {         
+            if (encrypt < 122)
             {
-                printf("%c", p[i] + c);
+                printf("%c", key + p[i]);    
             }
-            //if a wrap around is needed subtract the key
-            else if (p[i] + c > 122)
+            else if (encrypt > 122)
             {
-                printf("%c", p[i] - c);
+                printf("%c",  p[i] - (26-key));    
             }
+            
+          
 
         }
         //handling uppercase letters        
         if (isupper(p[i]))
         {
-            //if no wrap around is needed add they key
-            if (p[i] + c < 90)
-            {
-                printf("%c", p[i] + c);
-            }
-            //if a wrap around is needed subtract the key
-            else if (p[i] + c > 90)
-            {
-                printf("%c", p[i] - c);
-            }             
+            
+            
         }
 
         // if character is not an alphabet just print it
