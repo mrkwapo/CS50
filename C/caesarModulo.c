@@ -31,26 +31,36 @@ int main(int argc, string argv[])
     {
         //Declaring a variable that handles numbers that would cause a wrap around
         int key = atoi(argv[1]) % 26;
+        //Declaring a variable that combines the value of each letter plus the key to determine how to handle encryption
         int encrypt = key + p[i];
-        //handling lowercase letters
+        //handling encryption for lowercase letters
         if (islower(p[i]))
         {         
+            //if no wrap around needed encrypt
             if (encrypt < 122)
             {
                 printf("%c", key + p[i]);    
             }
+            // if wrap around needed handle wrap around and encrypt
             else if (encrypt > 122)
             {
-                printf("%c",  p[i] - (26-key));    
+                printf("%c",  p[i] - (26 - key));    
             }
-            
-          
 
         }
         //handling uppercase letters        
         if (isupper(p[i]))
         {
-            
+            //if no wrap around needed encrypt
+            if (encrypt < 90)
+            {
+                printf("%c", key + p[i]);    
+            }
+            // if wrap around needed handle wrap around and encrypt
+            else if (encrypt > 90)
+            {
+                printf("%c",  p[i] - (26 - key));    
+            }
             
         }
 
