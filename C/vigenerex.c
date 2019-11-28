@@ -1,16 +1,16 @@
-//incomplete
-//When complete, this program will use a keyword to encrypt a message provided by a user in plain text. Each letter in the keyword will be used to shift the value of each letter in the given plain text
 #include <cs50.h>
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
 
-int main(int argc, string argv[])
+int shift(char c);
+
+int main(int argc, string argv[1])
 {
-   //Validating that there is exactly 2 arguments
+       //Validating that there is exactly 2 arguments
     if (argc != 2)
     {
-        printf("Usage: ./caesar keyword\n");
+        printf("Usage: ./vigenere keyword\n");
         return 1;
     }
     //Validating each character in the key is a letter
@@ -18,41 +18,43 @@ int main(int argc, string argv[])
     {
         if (isdigit(argv[1][i]))
         {
-            printf("Usage: ./caesar keyword\n");
+            printf("Usage: ./vigenere keyword\n");
             return 1;
         }
     }
-
-    //getting the plain text and returning the ciphertext
+    
+    int key = shift(argv[1][0]);
+    
     string p = get_string("plaintext: ");
     printf("ciphertext: ");
     
-    
-//         for (int i = 0, n = strlen(p); i < n; i++)
-//     {
-//             string keyword = argv[1];
-//         for (int j = 0, m = strlen(keyword); j < m; j++){
-//             printf("%c", (p[i] + keyword[j]) % 26);
-//         }
-//     }
-    
-    
-        string keyword = argv[1];
-    
-    
-    //iterating through the length of the keyword
-    for (int i = 0; i < strlen(keyword); i++)
+    for (int i = 0; i < strlen(p); i++)
     {
-        int KEY[keyword[i]];
-//         printf("%i ", keyword[i]);
-        printf("%i ", KEY[i]);
+        printf("%c", p[i] + key);
+        
+
     }
     
+    printf("\n");
     
+}
+
+int shift(char c)
+{
+    if (islower(c))
+    {
+        int shifter = (c- 97) %26;
+        return shifter;
+    }
+    if (isupper(c))
+    {
+        int shifter = (c- 65) %26;
+        return shifter;
+    }
+   
+   
+   
     
-//     // if character is not an alphabet just print it
-//         if (!isalpha(p[i]))
-//         {
-//             printf("%c", p[i]);
-//         }
+    return true;
+    
 }
