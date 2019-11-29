@@ -39,7 +39,13 @@ int main(int argc, string argv[1])
         if(!isalpha(p[i] + key))
         {
              printf("%c",  p[i] - (26 - key));   
-        }        
+        }     
+        
+        // if character is not an alphabet just print it
+        if (!isalpha(p[i]))
+        {
+            printf("%c", p[i]);
+        }
 
     }
     
