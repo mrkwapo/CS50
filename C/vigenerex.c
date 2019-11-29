@@ -30,7 +30,16 @@ int main(int argc, string argv[1])
     
     for (int i = 0; i < strlen(p); i++)
     {
-        printf("%c", p[i] + key);
+        
+        if(isalpha(p[i] + key))
+        {
+             printf("%c", p[i] + key);
+        }
+        
+        if(!isalpha(p[i] + key))
+        {
+             printf("%c", p[i] + key);
+        }
         
 
     }
@@ -51,8 +60,6 @@ int shift(char c)
         int shifter = (c- 65) %26;
         return shifter;
     }
-   
-   
    
     
     return true;
