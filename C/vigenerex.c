@@ -1,71 +1,63 @@
-#include <cs50.h>
 #include <stdio.h>
-#include <ctype.h>
+#include <cs50.h>
 #include <string.h>
+#include <ctype.h>
 
 int shift(char c);
-
-int main(int argc, string argv[1])
-{
-       //Validating that there is exactly 2 arguments
-    if (argc != 2)
+int main(int argc, string argv[])
+{       
+    //do not run if there is no argument or more than one argument
+    if(argc !=2)
     {
-        printf("Usage: ./vigenere keyword\n");
+        printf("./vigenere keyword \n");
         return 1;
     }
-    //Validating each character in the key is a letter
-    for (int i = 0, n = strlen(argv[1]); i < n; i++)
+ 
+    //storing the value of argument index 1 in a variable
+     string keyword = argv[1];
+    
+    //checking each letter in the keyword. If there is a number stop program
+    for (int i = 0, len = strlen(keyword); i < len; i++)
     {
-        if (isdigit(argv[1][i]))
+        if(isdigit(keyword[i]))
         {
-            printf("Usage: ./vigenere keyword\n");
-            return 1;
+            printf("./vigenere keyword \n");
+            return false;
+        }
+        
+        if(ispunct(keyword[i]))
+        {
+            printf("invalid keyword \n");
+            return false;
         }
     }
     
     int key = shift(argv[1][0]);
-    
-    string p = get_string("plaintext: ");
-    printf("ciphertext: ");
-    
-    for (int i = 0; i < strlen(p); i++)
-    {
-        
-        if(isalpha(p[i] + key))
-        {
-             printf("%c", p[i] + key);
-        }
-        
-        if(!isalpha(p[i] + key))
-        {
-             printf("%c",  p[i] - (26 - key));   
-        }     
-        
-        // if character is not an alphabet just print it
-        if (!isalpha(p[i]))
-        {
-            printf("%c", p[i]);
-        }
 
+    //ask the user for a plain text message
+    string plaintext = get_string("Plaintext: ");
+    printf("Ciphertext: ");
+
+    for( int i = 0, len = strlen(plaintext); i < len; i++)
+    {
+        printf("%c", key + plaintext[i]);
     }
     
     printf("\n");
-    
 }
 
 int shift(char c)
 {
-    if (islower(c))
+    while(isupper(c)) 
     {
-        int shifter = (c- 97) %26;
-        return shifter;
+        int value = c - 65;
+        return value;
     }
-    if (isupper(c))
+    while(islower(c)) 
     {
-        int shifter = (c- 65) %26;
-        return shifter;
+        int value = c - 97;
+        return value;
     }
-    
-    return true;
-    
+    return 0;
 }
+
