@@ -1,77 +1,97 @@
-//This program uses a keyword to encrypt a message. Each character in the keyword shifts a letter in a message in order. And the keyword repeats while the message continues to be encrypted.
-#include <stdio.h>
+//this program encrypts messages using a keyword
 #include <cs50.h>
+#include <stdio.h>
 #include <string.h>
 #include <ctype.h>
 
 int shift(char c);
 int main(int argc, string argv[])
-{       
-    //do not run if there is no argument or more than one argument
+{
+    //validating that exactly 1 keyword is used when running the program
     if (argc != 2)
     {
-        printf("./vigenere keyword \n");
+        printf("Usage: ./vigenere keyword \n");
         return 1;
     }
- 
-    //storing the value of argument index 1 in a variable
-    string keyword = argv[1];
     
-    //checking each letter in the keyword. If there is a number or punctutation, the program will not run
-    for (int i = 0, len = strlen(keyword); i < len; i++)
+    //validating that they keyword uses all letters
+    for (int i = 0, len = strlen(argv[1]); i < len; i++)
     {
-        if (isdigit(keyword[i]))
+        if (isdigit(argv[1][i]))
         {
-            printf("./vigenere keyword \n");
-            return false;
-        }
+            printf("Usage: ./vigenere keyword \n");
+            return 1;
+        }        
         
-        if (ispunct(keyword[i]))
-        {
-            printf("invalid keyword \n");
-            return false;
-        }
-    }
+    }    
     
-    //ask the user for a plain text message
-    string plaintext = get_string("Plaintext: ");
-    printf("Ciphertext: ");
+    //Initializing a counter to itereate through the length of the keyword
+    int count = 0;   
     
-    //initializing a counter for the keyword. Note that the counter uses modulo to repeat the order of shifts using the keyword
-    int count = 0;
-    //creating 2 loops to iterate through the plaintext and keyword
-    for (int i = 0, len = strlen(plaintext); i < len; i++)
-    {
-        for (int j = 0, keyLen = strlen(keyword); j < keyLen; j++)
+    string plaintext = get_string("plaintext: ");
+    printf("ciphertext: ");
+        
+    for (int i = 0; i < strlen(plaintext); i++)
+    {      
+        //Declared a variable so we can use each letter in the keyword as a key
+        int key = shift(argv[1][count]);
+        //if no wrap around needed this just prints plaintext plus key for lowercase and uppercase letters
+        if (islower(plaintext[i]) && plaintext[i] + key <= 122)
         {
-            count = keyword[j] % keyLen;
+            printf("%c", plaintext[i] + key);
             
+        }
+        if (isupper(plaintext[i]) && plaintext[i] + key <= 90)
+        {
+            printf("%c", plaintext[i] + key);
+            
+        }
+        
+        //handles plaintext characters that need a wrap around  for lowercase and uppercase letters    
+        if (islower(plaintext[i]) &&  plaintext[i] + key > 122)
+        {
+            printf("%c", (plaintext[i] - 26) + key);
+            
+        }        
+        if (isupper(plaintext[i]) &&  plaintext[i] + key > 90)
+        {
+            printf("%c", (plaintext[i] - 26) + key);
+            
+        }
+        
+        //preserves spaces and punctuation and does not count itself to shift the value of the keyword letter
+        if (isspace(plaintext[i]) || ispunct(plaintext[i]))
+        {
+            printf("%c", plaintext[i]);
+            count--;
+        }
+        //if we reach the last character in the keyword this resets the counter to zero so we start back at the beginning of the keyword
+        if (count + 1 == strlen(argv[1]))
+        {
+            count = 0;
+        }
+        else
+        {
+            // if we are not at the last character of the keyword then increment by 1
+            count++;
         }  
-        //encrypt according to jth character in the keyword which handles wrap around with modulo
-        printf("%c", count + plaintext[i]);
         
     }
-    
     printf("\n");
 }
 
+//this function converts the values of lowercase and uppercase characters to numbers from 0 to 25. For example, 'A' or 'a' = 0. 'B' or 'b' = 1. 'Z' or 'z' = 25
 int shift(char c)
-{
-    //if the character is uppercase we minus it by the ASCII value of 'A' so that 'A' = 0, 'B' = 2, etc.
-    while (isupper(c)) 
-    {
-        int value = c - 65;
-        return value;
-    }
-    
-    //if the character is lowercase we minus it by the ASCII value of 'a' so that 'a' = 0, 'b'= 2, etc
-    while (islower(c)) 
+{    
+    if (islower(c))
     {
         int value = c - 97;
         return value;
     }
-    
-    
-    return 0;
+    if (isupper(c))
+    {
+        int value = c - 65;
+        return value;
+    }
+    return 1;
 }
-
