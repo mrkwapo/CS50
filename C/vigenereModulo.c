@@ -28,6 +28,7 @@ int main(int argc, string argv[])
     //Initializing a counter to itereate through the length of the keyword
     int count = 0;   
     
+    
     string plaintext = get_string("plaintext: ");
     printf("ciphertext: ");
         
@@ -65,13 +66,11 @@ int main(int argc, string argv[])
         //if we reach the last index character in the keyword this resets the counter to zero so we start back at the beginning of the keyword
         if (count + 1 == strlen(argv[1]))
         {
-            count = count % count;
+            count = (count + 1) % strlen(argv[1]);
+            count--;
         }
-        else
-        {
-            // if we are not at the last character of the keyword then increment by 1
-            count++;
-        }  
+        
+        count++; 
         
     }
     printf("\n");
