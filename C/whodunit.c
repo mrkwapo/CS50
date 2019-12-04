@@ -1,5 +1,4 @@
-//Use ./whodunit clue.bmp verdict.bmp in the terminal to run this program
-// Copies a BMP file
+// A bitmap file file named clue.bmp contains noisey red pixels that mask a message of who committed the crime. This program copies the file but changes the red pixels before saving it into a new file. 
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -72,17 +71,22 @@ int main(int argc, char *argv[])
             // temporary storage
             RGBTRIPLE triple;
 
+
             // read RGB triple from infile
             fread(&triple, sizeof(RGBTRIPLE), 1, inptr);
             
-           // convert pixels on clue.bmp
+            //To change the pixels that create a red noise on the inptr file so it is readable on the outptr file we are using a conditional that changes the red pixels to white and everything else pruple 
             if (triple.rgbtRed == 0xff)
             {
-                triple.rgbtRed = 0xff;
-                triple.rgbtBlue = 0xff;
-                triple.rgbtGreen = 0xff;
-                
-               
+                triple.rgbtRed = 0xff; 
+                triple.rgbtGreen = 0xff; 
+                triple.rgbtBlue = 0xff; 
+            }
+            else
+            {
+                triple.rgbtRed = 0x80; 
+                triple.rgbtGreen = 0x00; 
+                triple.rgbtBlue = 0x80; 
             }
 
             // write RGB triple to outfile
