@@ -13,8 +13,8 @@ print(type(sys.argv[0:]) is list)
 
 #Printing out plaintext without new license
 plaintext = input("plaintext: ")
-print("cyphertext: ")
-key = 1
+print("cyphertext: ", end='')
+key = 13
 
 for i in range(0, len(plaintext),1):
   c = int(key) % 26
@@ -22,8 +22,8 @@ for i in range(0, len(plaintext),1):
     if ord(plaintext[i]) + c < 122:
       print(chr(ord(plaintext[i])+ c), end='')
     
-    # elif ord(plaintext[i]) + c > 122:
-    #   print(chr(ord(plaintext[i])- c), end='')
+    elif ord(plaintext[i]) + c > 122:
+      print(chr(ord(plaintext[i])- c), end='')
 
 
 for i in range(0, len(plaintext),1):
@@ -31,3 +31,12 @@ for i in range(0, len(plaintext),1):
   if plaintext[i].isupper():
     if ord(plaintext[i]) + c < 90:
       print(chr(ord(plaintext[i])+ c), end='')
+
+    elif ord(plaintext[i]) + c > 90:
+      print(chr(ord(plaintext[i])- c), end='')
+
+#if there is a space print space
+  #if plaintext[i].isspace():
+  #   print(chr(ord(plaintext[i])))
+  elif not plaintext[i].isalpha():
+    print(plaintext[i])
