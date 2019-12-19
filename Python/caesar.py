@@ -1,5 +1,6 @@
 # how to access the command line argument
 import sys
+#import cs50
 
 print ('Number of arguments:', len(sys.argv), 'arguments.')
 print ('Argument List:', str(sys.argv))
@@ -11,9 +12,12 @@ print(type(sys.argv[0:]) is list)
 #   print("Usage: python caesar.py key") 
 #   exit(1)
 
-#Printing out plaintext without new license
+#get plaintext
+# plaintext = cs50.get_string("plaintext: ")
 plaintext = input("plaintext: ")
-print("cyphertext: ", end='')
+print("ciphertext: ", end='')
+
+# key = int(sys.argv[1])
 key = 13
 
 for i in range(0, len(plaintext),1):
@@ -36,7 +40,6 @@ for i in range(0, len(plaintext),1):
       print(chr(ord(plaintext[i])- c), end='')
 
 #if there is a space print space
-  #if plaintext[i].isspace():
-  #   print(chr(ord(plaintext[i])))
-  elif not plaintext[i].isalpha():
+
+if plaintext[i].isalpha() == False:
     print(plaintext[i])
