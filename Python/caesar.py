@@ -12,12 +12,22 @@ print(type(sys.argv[0:]) is list)
 #   exit(1)
 
 #Printing out plaintext without new license
-plaintext = int(input("plaintext: "))
+plaintext = input("plaintext: ")
 print("cyphertext: ")
 key = 1
 
 for i in range(0, len(plaintext),1):
   c = int(key) % 26
   if plaintext[i].islower():
-    if plaintext[i] + c < 122:
-      print(plaintext[i]+ c)
+    if ord(plaintext[i]) + c < 122:
+      print(chr(ord(plaintext[i])+ c), end='')
+    
+    # elif ord(plaintext[i]) + c > 122:
+    #   print(chr(ord(plaintext[i])- c), end='')
+
+
+for i in range(0, len(plaintext),1):
+  c = int(key) % 26
+  if plaintext[i].isupper():
+    if ord(plaintext[i]) + c < 90:
+      print(chr(ord(plaintext[i])+ c), end='')
