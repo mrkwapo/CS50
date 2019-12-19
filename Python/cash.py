@@ -29,5 +29,4 @@ while convertedChange >= 1 and convertedChange < 5:
          count += convertedChange / 1
          convertedChange %= 1
 
-print("Remaining Change " , convertedChange)
-print("Coins Count: " , count)
+print(int(count))
