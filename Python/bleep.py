@@ -14,13 +14,18 @@ explicit = input("What message would you like to censor?\n")
 
 f = open("banned.txt", "r")
 
-explicitList = explicit.split(' ')
-# with open('banned.txt') as f:
-for i in range(0, len(explicitList), 1):    
-    if explicitList[i] in f.read():
-      print("*" * len(explicitList[i]))
-    # if not explicit[i] in f.read():
-    elif not explicitList[i] in f.read():
-      print(explicitList[i] + ' ', end='')
+
+# print("The original list : " + str(explicit.split(' ')))
+
+for i in range(0, len(explicit.split(' ')), 1): 
+    if not explicit.split(' ')[i] in f.read():
+
+      res = [sub.replace(explicit.split(' ')[i], ("*" * len(explicit.split(' ')[i]))) for sub in explicit.split(' ')] 
+
+# print("The list after substring replacement : " + str(res)) 
+
+s = " "
+
+print (s.join( res ))     
 
 print()
