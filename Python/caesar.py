@@ -1,45 +1,39 @@
-# how to access the command line argument
+# This program ciphers a plain text message by shifting each character by the given key (which is a number)
 import sys
-#import cs50
+import cs50
 
-print ('Number of arguments:', len(sys.argv), 'arguments.')
-print ('Argument List:', str(sys.argv))
-print(type(sys.argv[0:]) is list)
-# print(type(sys.argv[0:]) is list)
+# validating length of command line arguments
+if not len(sys.argv) == 2:
+    print("Usage: python caesar.py key")
+    exit(1)
 
-#validating length of command line arguments
-# if not len(str(sys.argv)) == 1:
-#   print("Usage: python caesar.py key") 
-#   exit(1)
-
-#get plaintext
-# plaintext = cs50.get_string("plaintext: ")
-plaintext = input("plaintext: ")
+# getting plaintext from the user
+plaintext = cs50.get_string("plaintext: ")
 print("ciphertext: ", end='')
 
-# key = int(sys.argv[1])
-key = 13
+# initializing the key argument, casting it as a number and handling the ASCII wrap around with the Modulo operator
+key = int(sys.argv[1]) % 26
 
-for i in range(0, len(plaintext),1):
-  c = int(key) % 26
-  if plaintext[i].islower():
-    if ord(plaintext[i]) + c < 122:
-      print(chr(ord(plaintext[i])+ c), end='')
-    
-    elif ord(plaintext[i]) + c > 122:
-      print(chr(ord(plaintext[i])- c), end='')
+# iterating through each charcter in the plain text message
+for i in range(0, len(plaintext), 1):
+    encrypt = key + ord(plaintext[i])
 
+    # handling non alphabetic characters
+    if plaintext[i].isalpha() == False:
+        print(plaintext[i], end='')
 
-for i in range(0, len(plaintext),1):
-  c = int(key) % 26
-  if plaintext[i].isupper():
-    if ord(plaintext[i]) + c < 90:
-      print(chr(ord(plaintext[i])+ c), end='')
+    # handling lowercase
+    if plaintext[i].islower():
+        if encrypt < 122:
+            print(chr(key + ord(plaintext[i])), end='')
+        elif encrypt > 122:
+            print(chr(ord(plaintext[i]) - (26 - key)), end='')
 
-    elif ord(plaintext[i]) + c > 90:
-      print(chr(ord(plaintext[i])- c), end='')
+    # handling uppercase
+    if plaintext[i].isupper():
+        if encrypt < 90:
+            print(chr(key + ord(plaintext[i])), end='')
+        elif encrypt > 90:
+            print(chr(ord(plaintext[i]) - (26 - key)), end='')
 
-#if there is a space print space
-
-if plaintext[i].isalpha() == False:
-    print(plaintext[i])
+print()
