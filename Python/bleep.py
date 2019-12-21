@@ -29,7 +29,7 @@ censored = []
 # Iterating through each word in the explicit list.
 for x in explicitList:
     # If the word is found in the banned.txt replace it with *s that are the same length of the word and append it to the list called censored
-    if x in bannedWordsList:
+    if x.casefold() in bannedWordsList:
         censored.append(x.replace(x, "*" * len(x)))
     else:
         # if no sensoring is needed just append it to the List called censored
